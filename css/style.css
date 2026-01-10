@@ -1320,11 +1320,32 @@ section {
   }
 }
 
-.archive-link {
+/* Archive link in projects section - override inline-link default green color */
+.archive-link.inline-link {
   font-family: var(--font-mono);
   font-size: var(--fz-sm);
   display: inline-block;
   margin-bottom: 20px;
+  color: var(--light-slate) !important;
+  transition: var(--transition);
+}
+
+.archive-link.inline-link:hover,
+.archive-link.inline-link:focus {
+  color: var(--green) !important;
+}
+
+/* Ensure underline appears on hover */
+.archive-link.inline-link::after {
+  background-color: var(--green);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.archive-link.inline-link:hover::after,
+.archive-link.inline-link:focus::after {
+  opacity: 1;
+  width: 100%;
 }
 
 .project-card {
@@ -1596,5 +1617,203 @@ html {
 :focus-visible {
   outline: 2px dashed var(--green);
   outline-offset: 3px;
+}
+
+/* Archive Page */
+.archive-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 0;
+  padding-top: calc(var(--nav-height) + 40px);
+}
+
+/* Override first-of-type rule for archive section */
+main section:first-of-type.archive-section {
+  padding-top: calc(var(--nav-height) + 40px);
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .archive-section {
+    padding-top: calc(var(--nav-height) + 30px);
+  }
+  
+  main section:first-of-type.archive-section {
+    padding-top: calc(var(--nav-height) + 30px);
+  }
+}
+
+@media (max-width: 480px) {
+  .archive-section {
+    padding-top: calc(var(--nav-height) + 20px);
+  }
+  
+  main section:first-of-type.archive-section {
+    padding-top: calc(var(--nav-height) + 20px);
+  }
+}
+
+.archive-title {
+  font-size: clamp(40px, 8vw, 60px);
+  color: var(--lightest-slate);
+  margin-bottom: 10px;
+}
+
+.archive-subtitle {
+  font-size: var(--fz-lg);
+  color: var(--green);
+  font-family: var(--font-mono);
+  margin-bottom: 50px;
+}
+
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+.archive-table thead {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .archive-table thead {
+    display: table-header-group;
+  }
+}
+
+.archive-table th {
+  text-align: left;
+  padding: 10px 20px 10px 0;
+  color: var(--slate);
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--lightest-navy);
+}
+
+.archive-table th:last-child {
+  text-align: right;
+  padding-right: 0;
+}
+
+.archive-table tbody tr {
+  border-bottom: 1px solid var(--lightest-navy);
+  transition: var(--transition);
+}
+
+.archive-table tbody tr:hover {
+  background-color: var(--green-tint);
+}
+
+.archive-table td {
+  padding: 15px 20px 15px 0;
+  vertical-align: top;
+}
+
+.archive-table td:last-child {
+  padding-right: 0;
+  text-align: right;
+}
+
+.archive-year {
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: var(--fz-sm);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.archive-title-cell {
+  color: var(--lightest-slate);
+  font-size: var(--fz-lg);
+  font-weight: 500;
+}
+
+.archive-made-at {
+  color: var(--slate);
+  font-size: var(--fz-md);
+}
+
+.archive-tech {
+  color: var(--slate);
+  font-size: var(--fz-sm);
+  font-family: var(--font-mono);
+}
+
+.archive-tech span {
+  margin: 0 8px;
+  color: var(--dark-slate);
+}
+
+.archive-link {
+  color: var(--green);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.archive-link:hover {
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.archive-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 768px) {
+  .archive-table {
+    display: block;
+  }
+
+  .archive-table thead {
+    display: none;
+  }
+
+  .archive-table tbody {
+    display: block;
+  }
+
+  .archive-table tr {
+    display: block;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--lightest-navy);
+  }
+
+  .archive-table td {
+    display: block;
+    padding: 5px 0;
+    text-align: left !important;
+  }
+
+  .archive-table td:before {
+    content: attr(data-label);
+    display: block;
+    color: var(--slate);
+    font-family: var(--font-mono);
+    font-size: var(--fz-xs);
+    margin-bottom: 5px;
+  }
+
+  .archive-year {
+    font-size: var(--fz-md);
+    margin-bottom: 10px;
+  }
+
+  .archive-title-cell {
+    font-size: var(--fz-xl);
+    margin-bottom: 10px;
+  }
+
+  .archive-link {
+    margin-top: 10px;
+  }
 }
 
