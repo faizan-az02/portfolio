@@ -380,13 +380,14 @@ if (projectsGrid && CONFIG.projects.length > 0) {
 // ScrollReveal animations
 if (typeof ScrollReveal !== 'undefined') {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.innerWidth <= 768;
   
   if (!prefersReducedMotion) {
     const sr = ScrollReveal({
       origin: 'bottom',
-      distance: '20px',
-      duration: 500,
-      delay: 200,
+      distance: isMobile ? '10px' : '20px',
+      duration: isMobile ? 400 : 500,
+      delay: isMobile ? 50 : 200,
       rotate: { x: 0, y: 0, z: 0 },
       opacity: 0,
       scale: 1,
@@ -394,22 +395,26 @@ if (typeof ScrollReveal !== 'undefined') {
       mobile: true,
       reset: false,
       useDelay: 'always',
-      viewFactor: 0.25,
+      viewFactor: isMobile ? 0.1 : 0.25,
     });
 
-    // Reveal sections
-    sr.reveal('.hero-greeting', { delay: 100 });
-    sr.reveal('.hero h2', { delay: 200 });
-    sr.reveal('.hero h3', { delay: 300 });
-    sr.reveal('.hero-description', { delay: 400 });
-    sr.reveal('.email-link', { delay: 500 });
-    sr.reveal('#about', { delay: 200 });
-    sr.reveal('#jobs', { delay: 200 });
-    sr.reveal('#featured', { delay: 200 });
-    sr.reveal('#projects', { delay: 200 });
-    sr.reveal('#contact', { delay: 200 });
-    sr.reveal('.featured-project', { interval: 100 });
-    sr.reveal('.project-card', { interval: 100 });
+    // Reveal sections with mobile-optimized delays
+    const heroDelay = isMobile ? 50 : 100;
+    const sectionDelay = isMobile ? 50 : 200;
+    const interval = isMobile ? 50 : 100;
+
+    sr.reveal('.hero-greeting', { delay: heroDelay });
+    sr.reveal('.hero h2', { delay: heroDelay + 50 });
+    sr.reveal('.hero h3', { delay: heroDelay + 100 });
+    sr.reveal('.hero-description', { delay: heroDelay + 150 });
+    sr.reveal('.email-link', { delay: heroDelay + 200 });
+    sr.reveal('#about', { delay: sectionDelay });
+    sr.reveal('#jobs', { delay: sectionDelay });
+    sr.reveal('#featured', { delay: sectionDelay });
+    sr.reveal('#projects', { delay: sectionDelay });
+    sr.reveal('#contact', { delay: sectionDelay });
+    sr.reveal('.featured-project', { interval: interval });
+    sr.reveal('.project-card', { interval: interval });
   }
 }
 

@@ -71,6 +71,17 @@ body {
   line-height: 1.3;
 }
 
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  html {
+    overflow-x: hidden;
+  }
+}
+
 body.hidden {
   overflow: hidden;
 }
@@ -548,6 +559,7 @@ main {
   min-height: 100vh;
   padding: 0 150px;
   counter-reset: section;
+  overflow-x: hidden;
 }
 
 main section:first-of-type {
@@ -722,6 +734,18 @@ section {
   box-shadow: 0 10px 30px -15px var(--navy-shadow);
   transition: var(--transition);
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .pic-wrapper {
+    overflow: hidden;
+    max-width: 100%;
+  }
+  
+  .pic-img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .pic-wrapper:hover {
@@ -982,6 +1006,15 @@ section {
   .featured-project {
     margin-bottom: 30px;
   }
+  
+  .project-image {
+    height: 250px;
+    max-height: 250px;
+  }
+  
+  .project-img {
+    max-height: 250px;
+  }
 }
 
 .featured-project:nth-of-type(odd) .project-content {
@@ -1191,8 +1224,10 @@ section {
 @media (max-width: 768px) {
   .project-image {
     grid-column: 1 / -1;
-    height: 100%;
+    height: 300px;
+    max-height: 300px;
     opacity: 0.25;
+    overflow: hidden;
   }
 }
 
@@ -1202,6 +1237,8 @@ section {
   background-color: var(--green);
   border-radius: var(--border-radius);
   display: block;
+  overflow: hidden;
+  position: relative;
 }
 
 .project-image a::before {
@@ -1239,10 +1276,20 @@ section {
 }
 
 @media (max-width: 768px) {
+  .project-image {
+    max-height: 300px;
+    overflow: hidden;
+  }
+  
+  .project-image a {
+    max-height: 100%;
+  }
+  
   .project-img {
     object-fit: cover;
-    width: auto;
+    width: 100%;
     height: 100%;
+    max-height: 300px;
     filter: grayscale(100%) contrast(1) brightness(50%);
   }
 }
