@@ -1,6 +1,6 @@
 # Personal Portfolio Website
 
-A clean, modern portfolio website built with vanilla HTML, CSS, and JavaScript.
+A clean, modern portfolio website built with vanilla HTML, CSS, and JavaScript - matching the reference design.
 
 ## Structure
 
@@ -110,5 +110,6 @@ socialMedia: [
   },
 ]
 ```
+
 
 
