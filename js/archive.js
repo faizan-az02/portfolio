@@ -1,24 +1,66 @@
 // Archive projects data
-// Add year, madeAt fields to your projects
 const ARCHIVE_PROJECTS = [
-  // Add your projects here with year, title, madeAt, tech, and github fields
-  // Example:
-  // {
-  //   year: '2025',
-  //   title: 'Project Name',
-  //   madeAt: 'Company Name', // or '—' if personal project
-  //   tech: ['Tech1', 'Tech2', 'Tech3'],
-  //   github: 'https://github.com/...',
-  //   external: 'https://project.com' // optional
-  // }
-  
-  // For now, using projects from CONFIG and adding default values
+  {
+    year: '2024',
+    title: 'Vigilon - AI-Powered Smart Surveillance System',
+    madeAt: '—',
+    tech: ['Python', 'YOLO', 'Computer Vision', 'OpenCV', 'Deep Learning'],
+    github: 'https://github.com/faizan-az02',
+    external: '',
+  },
+  {
+    year: '2024',
+    title: 'Scalable Streaming Join Engine using MeshJoin',
+    madeAt: '—',
+    tech: ['Python', 'Streaming', 'Data Processing', 'ETL', 'Algorithms'],
+    github: 'https://github.com/faizan-az02',
+    external: '',
+  },
+  {
+    year: '2024',
+    title: 'Music Recommendation System using Audio Similarity',
+    madeAt: '—',
+    tech: ['Python', 'LSH', 'Audio Processing', 'MFCC'],
+    github: 'https://github.com/faizan-az02',
+    external: '',
+  },
+  {
+    year: '2024',
+    title: 'Multi-Task Facial Emotion Analysis',
+    madeAt: '—',
+    tech: ['Python', 'TensorFlow', 'Keras', 'VGG16', 'ResNet50', 'Computer Vision'],
+    github: 'https://github.com/faizan-az02',
+    external: '',
+  },
+  {
+    year: '2024',
+    title: 'Geometric Image Alignment and Multi-View Image Stitching System',
+    madeAt: '—',
+    tech: ['Python', 'OpenCV', 'Computer Vision', 'Image Processing'],
+    github: 'https://github.com/faizan-az02',
+    external: '',
+  },
+  {
+    year: '2024',
+    title: 'Image Similarity Search using Locality-Sensitive Hashing',
+    madeAt: '—',
+    tech: ['Python', 'LSH', 'Computer Vision', 'Web Interface'],
+    github: 'https://github.com/faizan-az02',
+    external: '',
+  },
 ];
 
 // Function to render archive table
 function renderArchiveTable() {
   const tableBody = document.getElementById('archiveTableBody');
-  if (!tableBody) return;
+  if (!tableBody) {
+    console.error('archiveTableBody not found. DOM might not be ready yet.');
+    // Try again after a short delay
+    setTimeout(renderArchiveTable, 100);
+    return;
+  }
+  
+  console.log('archiveTableBody found, rendering projects');
 
   // Combine CONFIG projects with ARCHIVE_PROJECTS
   // If ARCHIVE_PROJECTS is empty, use CONFIG.projects with default values
@@ -41,9 +83,16 @@ function renderArchiveTable() {
     return 0;
   });
 
+  console.log('Rendering', projectsToShow.length, 'projects');
   tableBody.innerHTML = '';
 
-  projectsToShow.forEach(project => {
+  if (projectsToShow.length === 0) {
+    console.warn('No projects to display');
+    return;
+  }
+
+  try {
+    projectsToShow.forEach(project => {
     const row = document.createElement('tr');
     
     // Format tech stack with middle dots
@@ -71,104 +120,64 @@ function renderArchiveTable() {
     
     tableBody.appendChild(row);
   });
+  } catch (error) {
+    console.error('Error rendering archive table:', error);
+  }
 }
 
 // Initialize archive table when page loads
-document.addEventListener('DOMContentLoaded', () => {
-  // Wait for CONFIG to be available if needed
+function initArchive() {
+  console.log('initArchive called, ARCHIVE_PROJECTS length:', ARCHIVE_PROJECTS.length);
   if (ARCHIVE_PROJECTS.length > 0) {
     renderArchiveTable();
-  } else if (typeof CONFIG !== 'undefined' && CONFIG.projects) {
-    renderArchiveTable();
-  } else {
-    // If CONFIG isn't loaded yet, wait a bit
-    setTimeout(() => {
-      if (typeof CONFIG !== 'undefined' && CONFIG.projects) {
-        renderArchiveTable();
-      }
-    }, 100);
+    return;
   }
+  if (typeof CONFIG !== 'undefined' && CONFIG.projects) {
+    renderArchiveTable();
+    return;
+  }
+  console.warn('No projects found to render');
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOMContentLoaded fired');
+  initArchive();
 });
 
-// Mobile menu functionality (reuse from main.js)
-const menuButton = document.getElementById('menuButton');
-const menu = document.getElementById('menu');
-const body = document.body;
-
-if (menuButton && menu) {
-  menuButton.addEventListener('click', () => {
-    menuButton.classList.toggle('active');
-    menu.classList.toggle('active');
-    body.classList.toggle('blur');
-    body.classList.toggle('hidden');
-  });
-
-  // Close menu when clicking on links
-  const menuLinks = menu.querySelectorAll('a');
-  menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      menuButton.classList.remove('active');
-      menu.classList.remove('active');
-      body.classList.remove('blur', 'hidden');
-    });
-  });
-
-  // Close menu on escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menu.classList.contains('active')) {
-      menuButton.classList.remove('active');
-      menu.classList.remove('active');
-      body.classList.remove('blur', 'hidden');
-    }
-  });
+// Fallback for if DOM is already loaded
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  console.log('DOM already ready, calling initArchive');
+  setTimeout(initArchive, 1);
 }
 
-// Navigation scroll behavior (reuse from main.js)
-let lastScroll = 0;
-const header = document.getElementById('nav');
-let scrolledToTop = true;
-let scrollTimeout = null;
+// Additional fallback on window load
+window.addEventListener('load', function() {
+  console.log('Window load fired');
+  initArchive();
+});
 
-function handleScroll() {
-  const currentScroll = window.pageYOffset;
+// Note: Mobile menu and navigation scroll behavior are handled by main.js
+// No need to duplicate that code here
+
+// Force render on script load - final fallback
+setTimeout(function() {
+  console.log('Final fallback: attempting to render archive');
+  console.log('ARCHIVE_PROJECTS:', ARCHIVE_PROJECTS);
+  console.log('ARCHIVE_PROJECTS length:', ARCHIVE_PROJECTS ? ARCHIVE_PROJECTS.length : 'undefined');
+  const tableBody = document.getElementById('archiveTableBody');
+  console.log('tableBody element:', tableBody);
   
-  if (scrollTimeout) {
-    clearTimeout(scrollTimeout);
-  }
-  
-  if (currentScroll < 50) {
-    scrolledToTop = true;
-    header.classList.remove('scrolled', 'hidden-nav');
+  if (ARCHIVE_PROJECTS && ARCHIVE_PROJECTS.length > 0 && tableBody) {
+    console.log('All conditions met, calling renderArchiveTable');
+    renderArchiveTable();
   } else {
-    scrolledToTop = false;
-    header.classList.add('scrolled');
-    
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      scrollTimeout = setTimeout(() => {
-        header.classList.add('hidden-nav');
-      }, 150);
-    } else {
-      header.classList.remove('hidden-nav');
-    }
+    console.error('Conditions not met:', {
+      hasProjects: !!ARCHIVE_PROJECTS,
+      projectsLength: ARCHIVE_PROJECTS ? ARCHIVE_PROJECTS.length : 0,
+      hasTableBody: !!tableBody
+    });
   }
-  
-  lastScroll = currentScroll;
-}
+}, 500);
 
-if (header) {
-  window.addEventListener('scroll', handleScroll);
-  
-  // Show nav when hovering near top of page
-  let mouseY = 0;
-  document.addEventListener('mousemove', (e) => {
-    mouseY = e.clientY;
-    if (mouseY < 100 && !scrolledToTop) {
-      header.classList.remove('hidden-nav');
-    }
-  });
-  
-  header.addEventListener('mouseenter', () => {
-    header.classList.remove('hidden-nav');
-  });
-}
 
