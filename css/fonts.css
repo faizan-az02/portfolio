@@ -1,0 +1,6 @@
+/* Font imports - You can use Google Fonts or host your own */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* For monospace, you can use system fonts or host SF Mono if you have it */
+/* The CSS variables in style.css will handle the font-family assignment */
+
