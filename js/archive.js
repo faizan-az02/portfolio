@@ -1,7 +1,7 @@
 // Archive projects data
 const ARCHIVE_PROJECTS = [
   {
-    year: '2024',
+    year: '2025',
     title: 'Vigilon - AI-Powered Smart Surveillance System',
     madeAt: '—',
     tech: ['Python', 'YOLO', 'Computer Vision', 'OpenCV', 'Deep Learning'],
@@ -17,7 +17,7 @@ const ARCHIVE_PROJECTS = [
     external: '',
   },
   {
-    year: '2024',
+    year: '2023',
     title: 'Music Recommendation System using Audio Similarity',
     madeAt: '—',
     tech: ['Python', 'LSH', 'Audio Processing', 'MFCC'],
@@ -25,7 +25,7 @@ const ARCHIVE_PROJECTS = [
     external: '',
   },
   {
-    year: '2024',
+    year: '2026',
     title: 'Multi-Task Facial Emotion Analysis',
     madeAt: '—',
     tech: ['Python', 'TensorFlow', 'Keras', 'VGG16', 'ResNet50', 'Computer Vision'],
@@ -33,7 +33,7 @@ const ARCHIVE_PROJECTS = [
     external: '',
   },
   {
-    year: '2024',
+    year: '2023',
     title: 'Geometric Image Alignment and Multi-View Image Stitching System',
     madeAt: '—',
     tech: ['Python', 'OpenCV', 'Computer Vision', 'Image Processing'],
@@ -41,7 +41,7 @@ const ARCHIVE_PROJECTS = [
     external: '',
   },
   {
-    year: '2024',
+    year: '2023',
     title: 'Image Similarity Search using Locality-Sensitive Hashing',
     madeAt: '—',
     tech: ['Python', 'LSH', 'Computer Vision', 'Web Interface'],
@@ -67,7 +67,7 @@ function renderArchiveTable() {
   let projectsToShow = ARCHIVE_PROJECTS.length > 0 
     ? ARCHIVE_PROJECTS 
     : (typeof CONFIG !== 'undefined' && CONFIG.projects ? CONFIG.projects.map(project => ({
-        year: '2024', // Default year - update this
+        year: '2026', // Default year - update this
         title: project.title,
         madeAt: '—', // Default to dash
         tech: project.tech,
