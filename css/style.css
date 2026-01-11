@@ -375,6 +375,7 @@ header.hidden-nav {
   position: relative;
   -webkit-tap-highlight-color: transparent;
   overflow: visible;
+  min-height: 30px;
 }
 
 @media (max-width: 768px) {
@@ -385,10 +386,10 @@ header.hidden-nav {
 
 .menu-button span {
   width: 30px;
-  height: 2px;
-  background: var(--green);
-  border-radius: 10px;
-  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  height: 3px;
+  background: #57cbff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
   position: absolute;
   left: 0;
   transform-origin: center;
@@ -397,11 +398,11 @@ header.hidden-nav {
 }
 
 .menu-button span:nth-child(1) {
-  top: 8px;
+  top: 7px;
 }
 
 .menu-button span:nth-child(2) {
-  top: 14px;
+  top: 13.5px;
 }
 
 .menu-button span:nth-child(3) {
@@ -409,23 +410,29 @@ header.hidden-nav {
 }
 
 .menu-button.active span:nth-child(1) {
-  transform: rotate(45deg) translateY(6px);
-  top: 14px;
-  background: var(--green);
+  transform: rotate(45deg);
+  top: 13.5px;
+  left: 0;
+  background: #57cbff;
   opacity: 1;
+  width: 30px;
+  height: 3px;
 }
 
 .menu-button.active span:nth-child(2) {
   opacity: 0;
   width: 0;
-  transform: scaleX(0);
+  height: 0;
 }
 
 .menu-button.active span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-6px);
-  top: 14px;
-  background: var(--green);
+  transform: rotate(-45deg);
+  top: 13.5px;
+  left: 0;
+  background: #57cbff;
   opacity: 1;
+  width: 30px;
+  height: 3px;
 }
 
 .menu {
@@ -451,6 +458,35 @@ header.hidden-nav {
 .menu.active {
   display: block;
   transform: translateX(0);
+}
+
+.menu-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-close svg {
+  width: 24px;
+  height: 24px;
+  transition: var(--transition);
+}
+
+.menu-close:hover svg,
+.menu-close:focus svg {
+  transform: rotate(90deg);
+  stroke: var(--white);
 }
 
 /* Backdrop overlay when menu is open */
