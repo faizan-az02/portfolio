@@ -96,12 +96,22 @@ const menuButton = document.getElementById('menuButton');
 const menu = document.getElementById('menu');
 const body = document.body;
 
-menuButton.addEventListener('click', () => {
-  menuButton.classList.toggle('active');
-  menu.classList.toggle('active');
-  body.classList.toggle('blur');
-  body.classList.toggle('hidden');
-});
+if (menuButton && menu) {
+  menuButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const isActive = menuButton.classList.contains('active');
+    console.log('Menu button clicked, current state:', isActive);
+    
+    menuButton.classList.toggle('active');
+    menu.classList.toggle('active');
+    body.classList.toggle('blur');
+    body.classList.toggle('hidden');
+    
+    console.log('Menu button after toggle:', menuButton.classList.contains('active'));
+    console.log('Menu button classes:', menuButton.className);
+  });
+}
 
 // Close menu when clicking on links
 const menuLinks = menu.querySelectorAll('a');

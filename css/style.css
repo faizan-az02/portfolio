@@ -365,9 +365,6 @@ header.hidden-nav {
 
 .menu-button {
   display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
   width: 30px;
   height: 30px;
   background: transparent;
@@ -377,11 +374,12 @@ header.hidden-nav {
   z-index: 13;
   position: relative;
   -webkit-tap-highlight-color: transparent;
+  overflow: visible;
 }
 
 @media (max-width: 768px) {
   .menu-button {
-    display: flex;
+    display: block;
   }
 }
 
@@ -390,15 +388,16 @@ header.hidden-nav {
   height: 2px;
   background: var(--green);
   border-radius: 10px;
-  transition: all 0.3s linear;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   position: absolute;
   left: 0;
   transform-origin: center;
   display: block;
+  will-change: transform;
 }
 
-.menu-button span:first-child {
-  top: 6px;
+.menu-button span:nth-child(1) {
+  top: 8px;
 }
 
 .menu-button span:nth-child(2) {
@@ -406,24 +405,27 @@ header.hidden-nav {
 }
 
 .menu-button span:nth-child(3) {
-  top: 22px;
+  top: 20px;
 }
 
-.menu-button.active span:first-child {
-  transform: rotate(45deg);
+.menu-button.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(6px);
   top: 14px;
   background: var(--green);
+  opacity: 1;
 }
 
 .menu-button.active span:nth-child(2) {
   opacity: 0;
+  width: 0;
   transform: scaleX(0);
 }
 
 .menu-button.active span:nth-child(3) {
-  transform: rotate(-45deg);
+  transform: rotate(-45deg) translateY(-6px);
   top: 14px;
   background: var(--green);
+  opacity: 1;
 }
 
 .menu {
