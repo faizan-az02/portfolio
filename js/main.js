@@ -132,9 +132,61 @@ menuLinks.forEach(link => {
 // Close menu on escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && menu.classList.contains('active')) {
-    menuButton.classList.remove('active');
-    menu.classList.remove('active');
-    body.classList.remove('blur', 'hidden');
+    closeMenu();
+  }
+});
+
+// Swipe to close menu on mobile (swipe RIGHT to close)
+let touchStartX = 0;
+let touchEndX = 0;
+let touchStartY = 0;
+let touchEndY = 0;
+
+if (menu) {
+  menu.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  menu.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+  }, { passive: true });
+}
+
+function handleSwipe() {
+  const swipeDistance = touchEndX - touchStartX; // Positive = swipe right
+  const verticalDistance = Math.abs(touchStartY - touchEndY);
+  
+  // Swipe RIGHT (positive distance) to close, and vertical movement should be minimal
+  if (swipeDistance > 100 && verticalDistance < 50 && menu.classList.contains('active')) {
+    closeMenu();
+  }
+}
+
+// Close menu when clicking outside (on backdrop)
+if (menu) {
+  menu.addEventListener('click', (e) => {
+    // If click is on the menu itself (not on nav or links), close it
+    if (e.target === menu) {
+      closeMenu();
+    }
+  });
+}
+
+// Also close when clicking on the backdrop overlay
+document.addEventListener('click', (e) => {
+  if (menu && menu.classList.contains('active')) {
+    // Check if click is outside the menu
+    const menuRect = menu.getBoundingClientRect();
+    const clickX = e.clientX;
+    const clickY = e.clientY;
+    
+    // If click is to the left of the menu (on the backdrop), close it
+    if (clickX < menuRect.left) {
+      closeMenu();
+    }
   }
 });
 

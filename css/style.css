@@ -478,9 +478,14 @@ header.hidden-nav {
 }
 
 .menu-close svg {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   transition: var(--transition);
+}
+
+.menu-close svg line {
+  stroke-width: 3;
+  stroke-linecap: round;
 }
 
 .menu-close:hover svg,
