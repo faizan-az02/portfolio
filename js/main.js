@@ -536,8 +536,8 @@ function updateSocialLinks() {
 
 // Pro Tip Popup
 function showProTipPopup() {
-  // Check if user has seen the popup before
-  const hasSeenProTip = localStorage.getItem('hasSeenProTip');
+  // Check if user has seen the popup in this session
+  const hasSeenProTip = sessionStorage.getItem('hasSeenProTip');
   
   if (!hasSeenProTip) {
     const popup = document.getElementById('proTipPopup');
@@ -591,8 +591,8 @@ function closeProTipPopup() {
   const popup = document.getElementById('proTipPopup');
   if (popup) {
     popup.classList.remove('show');
-    // Mark as seen in localStorage
-    localStorage.setItem('hasSeenProTip', 'true');
+    // Mark as seen in this session
+    sessionStorage.setItem('hasSeenProTip', 'true');
   }
 }
 
