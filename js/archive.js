@@ -29,7 +29,7 @@ const ARCHIVE_PROJECTS = [
     title: 'Multi-Task Facial Emotion Analysis',
     madeAt: '—',
     tech: ['Python', 'TensorFlow', 'Keras', 'VGG16', 'ResNet50', 'Computer Vision'],
-    github: 'https://github.com/faizan-az02',
+    github: 'https://github.com/faizan-az02/MultiTaskFacialEmotionAnalysis',
     external: '',
   },
   {
