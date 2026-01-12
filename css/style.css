@@ -1655,6 +1655,15 @@ section {
   transform: translate(-5px, -5px);
 }
 
+/* Archive Button - styled like email-link */
+.archive-button {
+  display: block;
+  margin: 80px auto 0;
+  text-align: center;
+  max-width: fit-content;
+  cursor: pointer;
+}
+
 /* Contact Section */
 .contact {
   max-width: 600px;
