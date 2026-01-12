@@ -534,8 +534,74 @@ function updateSocialLinks() {
   }
 }
 
+// Pro Tip Popup
+function showProTipPopup() {
+  // Check if user has seen the popup before
+  const hasSeenProTip = localStorage.getItem('hasSeenProTip');
+  
+  if (!hasSeenProTip) {
+    const popup = document.getElementById('proTipPopup');
+    const closeButton = document.getElementById('proTipClose');
+    const messageElement = document.getElementById('proTipMessage');
+    
+    if (!popup) {
+      console.warn('Pro tip popup element not found');
+      return;
+    }
+    
+    // Detect mobile device
+    const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    
+    // Update message based on device type
+    if (messageElement) {
+      messageElement.textContent = isMobile ? 'Tap on the photos' : 'Hover on the photos';
+    }
+    
+    // Show popup after a short delay for better UX
+    setTimeout(() => {
+      popup.classList.add('show');
+    }, 1000);
+    
+    // Close button functionality
+    if (closeButton) {
+      closeButton.addEventListener('click', () => {
+        closeProTipPopup();
+      });
+    }
+    
+    // Close on backdrop click
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        closeProTipPopup();
+      }
+    });
+    
+    // Close on Escape key
+    const escapeHandler = (e) => {
+      if (e.key === 'Escape' && popup.classList.contains('show')) {
+        closeProTipPopup();
+        document.removeEventListener('keydown', escapeHandler);
+      }
+    };
+    document.addEventListener('keydown', escapeHandler);
+  }
+}
+
+function closeProTipPopup() {
+  const popup = document.getElementById('proTipPopup');
+  if (popup) {
+    popup.classList.remove('show');
+    // Mark as seen in localStorage
+    localStorage.setItem('hasSeenProTip', 'true');
+  }
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
   updateSocialLinks();
+  showProTipPopup();
 });
+
+// Debug function: Call this in console to reset and show popup again
+// window.resetProTip = () => { localStorage.removeItem('hasSeenProTip'); location.reload(); };
 
