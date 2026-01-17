@@ -13,7 +13,7 @@ const ARCHIVE_PROJECTS = [
     title: 'Scalable Streaming Join Engine using MeshJoin',
     madeAt: '—',
     tech: ['Python', 'Streaming', 'Data Processing', 'ETL', 'Algorithms'],
-    github: 'https://github.com/faizan-az02',
+    github: 'https://github.com/faizan-az02/RetailSalesDataWarehouse',
     external: '',
   },
   {
