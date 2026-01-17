@@ -1,7 +1,7 @@
 // Archive projects data
 const ARCHIVE_PROJECTS = [
   {
-    year: '2025',
+    year: '2026',
     title: 'Vigilon - AI-Powered Smart Surveillance System',
     madeAt: '—',
     tech: ['Python', 'YOLO', 'Computer Vision', 'OpenCV', 'Deep Learning'],
@@ -49,13 +49,22 @@ const ARCHIVE_PROJECTS = [
     external: '',
   },
   {
-    year: '2024',
+    year: '2025',
     title: 'Clause Similarity Detection using BiLSTM Encoders',
     madeAt: '—',
     tech: ['Python', 'BiLSTM', 'Data Processing', 'ETL', 'NLP'],
     github: 'https://github.com/faizan-az02/LegalClausesSimilarity',
     external: '',
+  },
+  {
+    year: '2024',
+    title: 'Duck Shoot',
+    madeAt: '—',
+    tech: ['Assemblyx86', 'Logic Building', 'Games', '2D'],
+    github: 'https://github.com/faizan-az02/DuckShoot',
+    external: '',
   }
+  
 ];
 
 // Function to render archive table
