@@ -63,6 +63,14 @@ const ARCHIVE_PROJECTS = [
     tech: ['Assemblyx86', 'Logic Building', 'Games', '2D'],
     github: 'https://github.com/faizan-az02/DuckShoot',
     external: '',
+  },
+  {
+    year: '2024',
+    title: 'Farewell Management System',
+    madeAt: '—',
+    tech: ['Python', 'Javascript', 'HTML', 'CSS', "MySQL", "NodeJS", "Express"],
+    github: 'https://github.com/faizan-az02/DuckShoot',
+    external: '',
   }
   
 ];
