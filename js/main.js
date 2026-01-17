@@ -29,7 +29,7 @@ const CONFIG = {
     {
       title: 'Clause Similarity Detection using BiLSTM Encoders',
       description: 'Detected semantic similarity between clause pairs using BiLSTM encoders with mean and attention pooling. Achieved 99.90% accuracy with the attention-based model.',
-      tech: ['Python', 'TensorFlow', 'Keras', 'BiLSTM', 'Deep Learning', 'NLP', 'Attention Mechanisms'],
+      tech: ['Python', 'Keras', 'BiLSTM', 'Deep Learning', 'NLP'],
       github: 'https://github.com/faizan-az02/LegalClausesSimilarity',
       external: '',
     },
