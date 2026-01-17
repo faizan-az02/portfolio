@@ -48,6 +48,14 @@ const ARCHIVE_PROJECTS = [
     github: 'https://github.com/faizan-az02',
     external: '',
   },
+  {
+    year: '2024',
+    title: 'Clause Similarity Detection using BiLSTM Encoders',
+    madeAt: '—',
+    tech: ['Python', 'BiLSTM', 'Data Processing', 'ETL', 'NLP'],
+    github: 'https://github.com/faizan-az02/LegalClausesSimilarity',
+    external: '',
+  }
 ];
 
 // Function to render archive table
