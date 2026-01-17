@@ -21,7 +21,7 @@ const ARCHIVE_PROJECTS = [
     title: 'Music Recommendation System using Audio Similarity',
     madeAt: '—',
     tech: ['Python', 'LSH', 'Audio Processing', 'MFCC'],
-    github: 'https://github.com/faizan-az02',
+    github: 'https://github.com/faizan-az02/MusicRecommendationSystem',
     external: '',
   },
   {
