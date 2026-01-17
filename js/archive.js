@@ -69,7 +69,15 @@ const ARCHIVE_PROJECTS = [
     title: 'Farewell Management System',
     madeAt: '—',
     tech: ['Python', 'Javascript', 'HTML', 'CSS', "MySQL", "NodeJS", "Express"],
-    github: 'https://github.com/faizan-az02/DuckShoot',
+    github: 'https://github.com/faizan-az02/FarewellManagementSystem',
+    external: '',
+  },
+  {
+    year: '2023',
+    title: 'Emergency Route Planner',
+    madeAt: '—',
+    tech: ['C++', 'DSA', 'Logic Building', 'Algorithms', "CSP"],
+    github: 'https://github.com/faizan-az02/EmergencyTravelPlanner',
     external: '',
   }
   
