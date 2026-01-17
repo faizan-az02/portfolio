@@ -37,7 +37,7 @@ const ARCHIVE_PROJECTS = [
     title: 'Geometric Image Alignment and Multi-View Image Stitching System',
     madeAt: '—',
     tech: ['Python', 'OpenCV', 'Computer Vision', 'Image Processing'],
-    github: 'https://github.com/faizan-az02',
+    github: 'https://github.com/faizan-az02/ImageStitching',
     external: '',
   },
   {
