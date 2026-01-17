@@ -28,7 +28,7 @@ const CONFIG = {
     },
     {
       title: 'Clause Similarity Detection using BiLSTM Encoders',
-      description: 'Built neural network models to detect semantic similarity between clause pairs using BiLSTM encoders. Implemented two variants with mean pooling and attention pooling, achieving 99.90% accuracy with the attention-based model. Preprocessed grouped clause texts to generate positive and negative pairs for training.',
+      description: 'Detected semantic similarity between clause pairs using BiLSTM encoders with mean and attention pooling. Achieved 99.90% accuracy with the attention-based model.',
       tech: ['Python', 'TensorFlow', 'Keras', 'BiLSTM', 'Deep Learning', 'NLP', 'Attention Mechanisms'],
       github: 'https://github.com/faizan-az02/LegalClausesSimilarity',
       external: '',
