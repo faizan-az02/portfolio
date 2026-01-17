@@ -1613,6 +1613,13 @@ section {
 .project-card-description {
   color: var(--light-slate);
   font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.project-card-description p {
+  margin: 0;
+  line-height: 1.5;
 }
 
 .project-card-tech {
